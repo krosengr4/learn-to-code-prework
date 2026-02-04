@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
-	"strings"
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func main() {
@@ -32,13 +32,12 @@ func main() {
 	}
 }
 
-
 // Create list of colors
 // Ask user to enter a color
 // Print message if their color is or isn't in the list
 func colorCheck() {
-	
-	fmt.Println(strings.Repeat("-", 55))		
+
+	fmt.Println(strings.Repeat("-", 55))
 	fmt.Println("\t---COLOR CHECKER---")
 	fmt.Println(strings.Repeat("-", 55))
 
@@ -47,7 +46,8 @@ func colorCheck() {
 	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println("Enter a color: ")
 	scanner.Scan()
-	userColor := scanner.Text()
+	lowerColor := strings.ToLower(scanner.Text())
+	userColor := strings.TrimSpace(lowerColor)
 
 	isColorListed := false
 
@@ -64,6 +64,8 @@ func colorCheck() {
 		fmt.Println("That color is not listed :(")
 	}
 	fmt.Println(strings.Repeat("-", 55))
+
+	PauseScreen()
 }
 
 // Create a list of 5 numbers
@@ -72,7 +74,7 @@ func colorCheck() {
 // Swap the first and third number
 // Print the list
 func listMod() {
-	fmt.Println(strings.Repeat("-", 55))		
+	fmt.Println(strings.Repeat("-", 55))
 	fmt.Println("\t---LIST MODIFICATION---")
 	fmt.Println(strings.Repeat("-", 55))
 
@@ -82,7 +84,7 @@ func listMod() {
 // Calculate the total, average, minimum and maximum
 // Print calculations
 func calculations() {
-	fmt.Println(strings.Repeat("-", 55))		
+	fmt.Println(strings.Repeat("-", 55))
 	fmt.Println("\t---LIST CALCULATIONS---")
 	fmt.Println(strings.Repeat("-", 55))
 }
@@ -90,10 +92,10 @@ func calculations() {
 // Create list of 7 words
 // For each vowel, print the number of vowels in that word
 func vowelSort() {
-	fmt.Println(strings.Repeat("-", 55))		
+	fmt.Println(strings.Repeat("-", 55))
 	fmt.Println("\t---VOWEL SORTER---")
 	fmt.Println(strings.Repeat("-", 55))
-	
+
 }
 
 // Helper func to prompt user for integer type response, return that integer
@@ -114,4 +116,12 @@ func GetValidatedNumber(prompt string, min, max int) int {
 			fmt.Println("Invalid number. Please try again.")
 		}
 	}
+}
+
+// Helper function so that information pauses till user hits a key
+func PauseScreen() {
+	scanner := bufio.NewScanner(os.Stdin)
+
+	fmt.Println("Hit any key to continue...")
+	scanner.Scan()
 }
