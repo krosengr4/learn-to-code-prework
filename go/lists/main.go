@@ -87,6 +87,38 @@ func calculations() {
 	fmt.Println(strings.Repeat("-", 55))
 	fmt.Println("\t---LIST CALCULATIONS---")
 	fmt.Println(strings.Repeat("-", 55))
+
+	nums := [10]int{23, 64, 28, 33, 56, 97, 23, 18, 4, 67}
+	total := 0
+	var average float32
+	min := 100000
+	max := 0
+
+	fmt.Println(strings.Repeat("-", 55))
+	fmt.Println("ORIGINAL LIST:", nums)
+	fmt.Println(strings.Repeat("-", 55))
+
+	for _, num := range nums {
+		total += num
+
+		if num < min {
+			min = num
+		}
+		if num > max {
+			max = num
+		}
+	}
+	
+	average = float32(total) / float32(len(nums))
+
+	fmt.Println(strings.Repeat("-", 55))
+	fmt.Printf("TOTAL: %d\n", total)
+	fmt.Printf("AVERAGE: %.2f\n", average)
+	fmt.Printf("SMALLEST: %d\n", min)
+	fmt.Printf("LARGEST: %d\n", max)
+	fmt.Println(strings.Repeat("-", 55))
+
+	PauseScreen()
 }
 
 // Create list of 7 words
