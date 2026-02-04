@@ -128,6 +128,31 @@ func vowelSort() {
 	fmt.Println("\t---VOWEL SORTER---")
 	fmt.Println(strings.Repeat("-", 55))
 
+	words := [7]string{"telescope", "whisper", "umbrella", "cinnamon", "glacier", "rhythm", "lantern"}
+	vowels := []rune{'a', 'e', 'i', 'o', 'u'}
+	vowelCount := 0
+
+	fmt.Println(strings.Repeat("-", 55))
+	fmt.Println("ORIGINAL LIST:\n", words)
+	fmt.Println(strings.Repeat("-", 55))
+
+
+	// Loop through each word
+	for _, word := range words {
+		// Loop through each character in a word
+		for _, char := range word {
+			// Loop through each vowel
+			for _, vowel := range vowels {
+				if char == vowel {
+					vowelCount++
+				}
+			}
+		}
+	}
+
+	fmt.Println(strings.Repeat("-", 55))
+	fmt.Println("Vowel Count: ", vowelCount)
+	fmt.Println(strings.Repeat("-", 55))
 }
 
 // Helper func to prompt user for integer type response, return that integer
