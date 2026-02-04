@@ -103,13 +103,65 @@ func MemberDiscount() {
 
 // Ask user for 3 numbers, determine the largest and smallest without built in functions
 func NumberComparison() {
+	fmt.Println("\tNUMBER COMPARISON")
 
+	num1 := GetValidatedNumber("Enter first number between 1 and 100: ", 1, 100)
+	num2 := GetValidatedNumber("Enter second number between 1 and 100: ", 1, 100)
+	num3 := GetValidatedNumber("Enter third number between 1 and 100: ", 1, 100)
+
+	numList := [3]int{num1, num2, num3}
+	min := 101
+	max := 0
+	
+
+	for _, num := range numList {
+		if num < min {
+			min = num
+		}
+		if num > max {
+			max = num
+		}
+	}
+
+	fmt.Println(strings.Repeat("-", 55))
+	fmt.Println("Minimum:", min)
+	fmt.Println("Maximum:", max)
+	fmt.Println(strings.Repeat("-", 55))
 }
 
 // Ask for four integer variables
 // Print the second to largest number and if it is even or odd
 func NestedPuzzle() {
+	fmt.Println("NESTED PUZZLE")
+	num1 := GetValidatedNumber("Enter first number between 1 and 100: ", 1, 100)
+	num2 := GetValidatedNumber("Enter second number between 1 and 100: ", 1, 100)
+	num3 := GetValidatedNumber("Enter third number between 1 and 100: ", 1, 100)
+	num4 := GetValidatedNumber("Enter fourth number between 1 and 100: ", 1, 100)
 
+	nums := [4]int{num1, num2, num3, num4}
+	largest := 0
+	secondLargest := 0
+
+	for _, num := range nums {
+		if num > largest {
+			// Demote max to second largest
+			secondLargest = largest
+			largest = num
+		} else if num > secondLargest {
+			// If num is bigger than [0] and [1], but less than max
+			secondLargest = num
+		}
+
+	}
+
+	evenOdd := "odd"
+	if secondLargest % 2 == 0 {
+		evenOdd = "even"
+	}
+	
+	fmt.Println(strings.Repeat("-", 55))
+	fmt.Printf("Second Largest Number: %d (%s)\n", secondLargest, evenOdd)
+	fmt.Println(strings.Repeat("-", 55))
 }
 
 // Helper func to prompt user for integer type response, return that integer
